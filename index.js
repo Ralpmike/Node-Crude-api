@@ -1,3 +1,4 @@
+require("dotenv").config();
 const express = require("express");
 const mongoose = require("mongoose");
 const app = express();
@@ -103,9 +104,7 @@ app.get("/", (req, res) => {
 // });
 
 mongoose
-  .connect(
-    "mongodb+srv://ralphmike996:MKX0Ql5OfeTJzrKs@crudebackendapi.vl7rnfy.mongodb.net/Node-CRUDE?retryWrites=true&w=majority&appName=crudeBackendApi"
-  )
+  .connect(process.env.MONGODB_URI)
   .then(() => {
     console.log("Connected to MongoDB");
     app.listen(3000, () => {
